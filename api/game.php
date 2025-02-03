@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $player_id = $data['player_id']; // ID کاربری که بازی رو شروع کرده
 
         // بررسی اینکه آیا بازی در حال انتظار وجود داره یا نه
-        $stmt = $pdo->prepare("SELECT * FROM games WHERE status = 'waiting' LIMIT 1");
-        $stmt->execute();
+        $stmt = $pdo->prepare("UPDATE games SET turn = CASE WHEN turn = 1 THEN 2 ELSE 1 END WHERE id = ?");
+        $stmt->execute([$game_id]);
         $waiting_game = $stmt->fetch();
 
         if ($waiting_game) {

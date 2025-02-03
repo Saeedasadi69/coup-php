@@ -172,9 +172,7 @@ async function makeMove(move) {
 
 // بارگذاری اطلاعات لاگین هنگام لود صفحه
 window.addEventListener('load', () => {
-    loadLoginInfo();
-
-    // اطمینان از وجود دکمه‌ها قبل از افزودن Event Listener
+    // اطمینان از وجود عناصر قبل از افزودن Event Listener
     if (document.getElementById('collectCoins')) {
         document.getElementById('collectCoins').addEventListener('click', () => makeMove('collect_coins'));
     }
